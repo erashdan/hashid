@@ -25,6 +25,5 @@ class HashidServiceProvider extends ServiceProvider
      */
     public function register()
     {
-
     }
 }
