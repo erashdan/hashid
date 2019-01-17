@@ -6,13 +6,11 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class HashingTest extends TestCase
 {
-
     /** @test * */
     public function hashid_can_hash_primary_key()
     {
         $this->assertEquals('N5zQE4', $this->testModel->hashed_id);
     }
-
 
     /** @test * */
     public function get_correct_element_by_hashed_id()
@@ -61,6 +59,5 @@ class HashingTest extends TestCase
         config(['hashid.hash_data.length' => 'STRING']);
         $this->expectExceptionMessage('Unable to define hashing length');
         $this->assertNotNull($this->testModel->hashed_id);
-
     }
 }

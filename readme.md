@@ -1,4 +1,4 @@
-# Eloquent Hashid
+# Eloquent Hashid [![Build Status](https://travis-ci.org/erashdan/hashid.svg?branch=master)](https://travis-ci.org/erashdan/hashid)
 
 * [Installation](#installation)
 * [Usage](#usage)

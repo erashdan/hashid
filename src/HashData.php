@@ -7,7 +7,7 @@ use Hashids\Hashids;
 class HashData
 {
     /**
-     * Encode ID
+     * Encode ID.
      *
      * @param $key
      * @param null $baseKey
@@ -21,9 +21,8 @@ class HashData
         return $hashids->encode($key);
     }
 
-
     /**
-     * Decode ID
+     * Decode ID.
      *
      * @param $key
      * @param null $baseKey
@@ -32,25 +31,27 @@ class HashData
      */
     public static function Decode($key, $baseKey = null)
     {
-        if (!$baseKey)
+        if (! $baseKey) {
             $baseKey = self::getKey();
+        }
 
         $hashids = new Hashids($baseKey, self::getLength());
+
         return $hashids->decode($key);
     }
 
     /**
-     * Get length
+     * Get length.
      *
      * @throws \Exception
-     * @return integer
+     * @return int
      */
     private static function getLength(): int
     {
         if (
             (config('hashid.hash_data.length') == null) ||
             (config('hashid.hash_data.length') == '') ||
-            !is_int(config('hashid.hash_data.length'))
+            ! is_int(config('hashid.hash_data.length'))
         ) {
             throw new \Exception('Unable to define hashing length');
         }
