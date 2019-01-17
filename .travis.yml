@@ -1,11 +1,15 @@
 language: php
 
 install:
-  composer install
+  composer install --no-interaction
 
 php:
   - 7.1
   - 7.2
+
+cache:
+  directories:
+    - vendor
 
 script:
   - php vendor/bin/phpunit
