@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 trait Hashid
 {
     /**
-     * Encode hashed id
+     * Encode hashed id.
      *
      * @return mixed
      * @throws \Exception
@@ -16,11 +16,12 @@ trait Hashid
     public function getHashedIdAttribute()
     {
         $primary = $this->primaryKey;
+
         return HashData::Encode($this->$primary, self::setHashKey(self::class), 20);
     }
 
     /**
-     * Decode hash id
+     * Decode hash id.
      *
      * @param $id
      * @return |null
@@ -33,8 +34,6 @@ trait Hashid
         if (count($decode) > 0) {
             return $decode[0];
         }
-
-        return null;
     }
 
     public function scopeFindOrFailHashed($query, $id)
@@ -49,7 +48,7 @@ trait Hashid
     public function scopeFindHashed($query, $id)
     {
         if (empty($decoded = self::DecodeId($id))) {
-            return null;
+            return;
         }
 
         return $query->find(self::DecodeId($id));
@@ -61,6 +60,7 @@ trait Hashid
         foreach ($values as $value) {
             $hash[] = self::DecodeId($value);
         }
+
         return $query->whereIn($this->primaryKey, $hash);
     }
 
@@ -73,6 +73,6 @@ trait Hashid
             throw new \Exception('Unable to define hashing key');
         }
 
-        return config('hashid.hash_data.key') . $class;
+        return config('hashid.hash_data.key').$class;
     }
 }
