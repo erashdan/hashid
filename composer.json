@@ -22,7 +22,6 @@
             "email": "emadiga@gmail.com"
         }
     ],
-    "minimum-stability": "dev",
     "extra": {
         "laravel": {
             "providers": [
