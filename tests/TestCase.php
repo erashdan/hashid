@@ -22,7 +22,6 @@ abstract class TestCase extends Orchestra
         config(['hashid.hash_data.length' => 6]);
     }
 
-
     /**
      * Set up the environment.
      *
@@ -36,7 +35,6 @@ abstract class TestCase extends Orchestra
             'database' => ':memory:',
             'prefix'   => '',
         ]);
-
     }
 
     /**
@@ -55,5 +53,4 @@ abstract class TestCase extends Orchestra
 
         TestModel::create(['another_key' => 2]);
     }
-
 }

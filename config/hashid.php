@@ -14,5 +14,5 @@ return [
          */
 
         'length' => env('HASHID_LENGTH', 6),
-    ]
+    ],
 ];
