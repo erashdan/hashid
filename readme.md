@@ -2,7 +2,9 @@
 
 * [Installation](#installation)
 * [Usage](#usage)
+* [Testing](#testing)
 * [Credits](#credits)
+* [Todo](#todo)
 
 This package make the primary key in eloquent is hashed.
 
@@ -72,10 +74,16 @@ $post = \App\Post::FindOrFailHashed('x7LR5oQJleJX60yPpNWV');
 $post->id; //1
 ```
 
+### Testing
+
+``` bash
+composer test
+```
+
 ## Credits
 - [Emad Rashdan](https://github.com/erashdan)
 
-
+## TODO 
 ```.todo
 - [x] Build dev version.
 - [] Create command for key generater.
