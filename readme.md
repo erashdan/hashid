@@ -6,7 +6,7 @@
 * [Credits](#credits)
 * [Todo](#todo)
 
-This package make the primary key in eloquent is hashed.
+This package hashes the primary key of an eloquent record.
 
 ```php
 // Get Hash ID
@@ -23,26 +23,27 @@ You can install the package via composer:
 composer require erashdan/hashid
 ```
 
-The service provider will automatically get registered package.
+Laravel's package auto discovery will automatically register the service provider for you.
 
-You should set configuration by publish it to your project:
+Then you need to publish the configuration to your project:
 
 ```bash
 php artisan vendor:publish --provider="Erashdan\Hashid\HashidServiceProvider" --tag="config"
 ``` 
 
-Then add in .env file
+And add the key used for the hashing in .env file
 ```dotenv
 HASHID_KEY=SET_YOUR_KEY
 ```
+
 **OR**
 
-Change in `config/hashid.php` key parameter to laravel application key
+Use Laravel's own app key, change the _key_ parameter in `config/hashid.php` to Laravel's application key
 ```php
 'key' => env('APP_KEY'),
 ```
 
-You can change hashing length from `.env` file .
+You can also change the length of the resulted hash from `.env` file.
 
 ```dotenv
 HASHID_LENGTH=6
@@ -50,7 +51,7 @@ HASHID_LENGTH=6
 
 ## Usage
 
-The eloquent by default will not implement hashid, so you should use it as trait.
+Eloquent by default doesn't implement hashid, so you should use the trait provided from the package.
 
 ```php
 use Illuminate\Database\Eloquent\Model;
@@ -61,14 +62,14 @@ class Post extends Model
     use Hashid;
 ```
 
-After use trait in eloquent you can call hashed_id attribute.
+You can then use the hashed_id attribute on the eloquent object itself.
 
 ```php
 $post = \App\Post::first();
 $post->hashed_id; //x7LR5oQJleJX60yPpNWV
 ```
 
-To search for hashed element
+Or find a resource by hash
 ```php
 $post = \App\Post::FindOrFailHashed('x7LR5oQJleJX60yPpNWV');
 $post->id; //1
