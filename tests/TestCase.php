@@ -10,7 +10,7 @@ abstract class TestCase extends Orchestra
     /** @var \Erashdan\Hashid\Test\TestModel */
     protected $testModel;
 
-    public function setUp()
+    public function setUp() : void
     {
         parent::setUp();
 
