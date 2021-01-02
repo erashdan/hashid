@@ -65,13 +65,13 @@ class Post extends Model
 You can then use the hashed_id attribute on the eloquent object itself.
 
 ```php
-$post = \App\Post::first();
+$post = \App\Models\Post::first();
 $post->hashed_id; //x7LR5oQJleJX60yPpNWV
 ```
 
 Or find a resource by hash
 ```php
-$post = \App\Post::FindOrFailHashed('x7LR5oQJleJX60yPpNWV');
+$post = \App\Models\Post::FindOrFailHashed('x7LR5oQJleJX60yPpNWV');
 $post->id; //1
 ```
 
@@ -83,11 +83,3 @@ composer test
 
 ## Credits
 - [Emad Rashdan](https://github.com/erashdan)
-
-## TODO 
-```.todo
-- [x] Build dev version.
-- [] Create command for key generater.
-- [] Can store hash id on database.
-- [] Can be cached.
-```
