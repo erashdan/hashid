@@ -19,7 +19,7 @@ class HashidServiceProvider extends ServiceProvider
         }
 
         Validator::extend('hashed_exists',
-            HashedIdValidator::class . '@validate',
+            HashedIdValidator::class.'@validate',
             trans('The selected :attribute is invalid.')
         );
     }
@@ -37,7 +37,7 @@ class HashidServiceProvider extends ServiceProvider
     protected function bootForConsole()
     {
         $this->publishes([
-            __DIR__ . '/../config/hashid.php' => config_path('hashid.php'),
+            __DIR__.'/../config/hashid.php' => config_path('hashid.php'),
         ], 'config');
     }
 }

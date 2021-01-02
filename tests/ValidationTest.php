@@ -13,15 +13,15 @@ class ValidationTest extends TestCase
         $this->registerValidator();
 
         $rules = [
-            'key' => 'hashed_exists:' . TestModel::class
+            'key' => 'hashed_exists:'.TestModel::class,
         ];
 
         $invalid_data = [
-            'key' => 'ANY KEY'
+            'key' => 'ANY KEY',
         ];
 
         $valid_data = [
-            'key' => 'N5zQE4'
+            'key' => 'N5zQE4',
         ];
 
         $failed_validation = $this->app['validator']->make($invalid_data, $rules);
@@ -33,6 +33,6 @@ class ValidationTest extends TestCase
 
     protected function registerValidator()
     {
-        Validator::extend('hashed_exists', HashedIdValidator::class . '@validate', trans('The selected :attribute is invalid.'));
+        Validator::extend('hashed_exists', HashedIdValidator::class.'@validate', trans('The selected :attribute is invalid.'));
     }
 }
