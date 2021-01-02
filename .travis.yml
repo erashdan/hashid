@@ -4,7 +4,6 @@ install:
   composer install --no-interaction
 
 php:
-  - 7.3
   - 7.4
   - 8.0
 

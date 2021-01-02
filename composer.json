@@ -6,7 +6,7 @@
     ],
     "description": "Simple package to hash eloquent primary key",
     "require": {
-        "php": "^7.3|^7.4|^8.0",
+        "php": "^7.4|^8.0",
         "hashids/hashids": "^3.0",
         "illuminate/container": "^6.0|^7.0|^8.0",
         "illuminate/contracts": "^6.0|^7.0|^8.0",
