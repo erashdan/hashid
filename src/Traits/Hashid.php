@@ -41,7 +41,7 @@ trait Hashid
     //  ----------    Scope    ----------
 
     /**
-     * Find or fail by hash ID
+     * Find or fail by hash ID.
      *
      * @param $query
      * @param $id
@@ -58,7 +58,7 @@ trait Hashid
     }
 
     /**
-     * Find resource by hashed id
+     * Find resource by hashed id.
      *
      * @param $id
      * @return null|Model
@@ -74,7 +74,7 @@ trait Hashid
     }
 
     /**
-     * Find multiple resources by hash ids
+     * Find multiple resources by hash ids.
      *
      * @param $query
      * @param array $values
@@ -101,6 +101,6 @@ trait Hashid
             throw new UndefinedKey();
         }
 
-        return config('hashid.hash_data.key') . $class;
+        return config('hashid.hash_data.key').$class;
     }
 }

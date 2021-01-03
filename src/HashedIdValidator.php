@@ -6,7 +6,7 @@ class HashedIdValidator
 {
     public function validate($attribute, $value, $parameters, $validator)
     {
-        if (!isset($parameters[0])) {
+        if (! isset($parameters[0])) {
             return false;
         }
 
