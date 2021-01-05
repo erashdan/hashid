@@ -2,7 +2,9 @@
 
 namespace Erashdan\Hashid\Traits;
 
+use Erashdan\Hashid\Exceptions\UndefinedKey;
 use Erashdan\Hashid\HashData;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 trait Hashid
@@ -36,6 +38,16 @@ trait Hashid
         }
     }
 
+    //  ----------    Scope    ----------
+
+    /**
+     * Find or fail by hash ID.
+     *
+     * @param $query
+     * @param $id
+     * @return mixed
+     * @throws \Exception
+     */
     public function scopeFindOrFailHashed($query, $id)
     {
         if (empty($decoded = self::DecodeId($id))) {
@@ -45,18 +57,34 @@ trait Hashid
         return $query->findOrFail(self::DecodeId($id));
     }
 
-    public function scopeFindHashed($query, $id)
+    /**
+     * Find resource by hashed id.
+     *
+     * @param $id
+     * @return null|Model
+     * @throws \Exception
+     */
+    public static function FindHashed($id)
     {
         if (empty($decoded = self::DecodeId($id))) {
-            return;
+            return null;
         }
 
-        return $query->find(self::DecodeId($id));
+        return self::find(self::DecodeId($id));
     }
 
-    public function scopeWhereInHashed($query, $values)
+    /**
+     * Find multiple resources by hash ids.
+     *
+     * @param $query
+     * @param array $values
+     * @return mixed
+     * @throws \Exception
+     */
+    public function scopeWhereInHashed($query, array $values)
     {
         $hash = [];
+
         foreach ($values as $value) {
             $hash[] = self::DecodeId($value);
         }
@@ -70,7 +98,7 @@ trait Hashid
             (config('hashid.hash_data.key') == null) ||
             (config('hashid.hash_data.key') == '')
         ) {
-            throw new \Exception('Unable to define hashing key');
+            throw new UndefinedKey();
         }
 
         return config('hashid.hash_data.key').$class;

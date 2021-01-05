@@ -7,7 +7,7 @@ use Orchestra\Testbench\TestCase as Orchestra;
 
 abstract class TestCase extends Orchestra
 {
-    /** @var \Erashdan\Hashid\Test\TestModel */
+    /** @var TestModel */
     protected $testModel;
 
     public function setUp(): void

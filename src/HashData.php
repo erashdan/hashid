@@ -2,6 +2,7 @@
 
 namespace Erashdan\Hashid;
 
+use Erashdan\Hashid\Exceptions\UndefinedLength;
 use Hashids\Hashids;
 
 class HashData
@@ -53,7 +54,7 @@ class HashData
             (config('hashid.hash_data.length') == '') ||
             ! is_int(config('hashid.hash_data.length'))
         ) {
-            throw new \Exception('Unable to define hashing length');
+            throw new UndefinedLength();
         }
 
         return config('hashid.hash_data.length');

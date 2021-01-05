@@ -75,6 +75,14 @@ $post = \App\Post::FindOrFailHashed('x7LR5oQJleJX60yPpNWV');
 $post->id; //1
 ```
 
+## Validation
+You can validate if hashed id is existed in model or not
+```php
+    request()->validate([
+        'post_id' => 'hashed_exists:' . \App\Post::class
+    ]);
+```
+
 ### Testing
 
 ``` bash
