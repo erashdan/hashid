@@ -11,6 +11,7 @@ trait Hashid
      * Encode hashed id.
      *
      * @return mixed
+     *
      * @throws \Exception
      */
     public function getHashedIdAttribute()
@@ -25,6 +26,7 @@ trait Hashid
      *
      * @param $id
      * @return |null
+     *
      * @throws \Exception
      */
     public static function DecodeId($id)
