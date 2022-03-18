@@ -42,7 +42,7 @@ trait Hashid
             throw new ModelNotFoundException('Unable to find element', 404);
         }
 
-        return $query->findOrFail(self::DecodeId($id));
+        return $query->findOrFail($decoded);
     }
 
     public function scopeFindHashed($query, $id)
@@ -51,7 +51,7 @@ trait Hashid
             return;
         }
 
-        return $query->find(self::DecodeId($id));
+        return $query->find($decoded);
     }
 
     public function scopeWhereInHashed($query, $values)
