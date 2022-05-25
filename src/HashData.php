@@ -10,8 +10,9 @@ class HashData
      * Encode ID.
      *
      * @param $key
-     * @param null $baseKey
+     * @param  null  $baseKey
      * @return mixed
+     *
      * @throws \Exception
      */
     public static function Encode($key, $baseKey)
@@ -25,8 +26,9 @@ class HashData
      * Decode ID.
      *
      * @param $key
-     * @param null $baseKey
+     * @param  null  $baseKey
      * @return mixed
+     *
      * @throws \Exception
      */
     public static function Decode($key, $baseKey = null)
@@ -43,8 +45,9 @@ class HashData
     /**
      * Get length.
      *
-     * @throws \Exception
      * @return int
+     *
+     * @throws \Exception
      */
     private static function getLength(): int
     {
