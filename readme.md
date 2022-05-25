@@ -4,7 +4,6 @@
 * [Usage](#usage)
 * [Testing](#testing)
 * [Credits](#credits)
-* [Todo](#todo)
 
 This package hashes the primary key of an eloquent record.
 

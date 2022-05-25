@@ -11,6 +11,7 @@ trait Hashid
      * Encode hashed id.
      *
      * @return mixed
+     *
      * @throws \Exception
      */
     public function getHashedIdAttribute()
@@ -25,6 +26,7 @@ trait Hashid
      *
      * @param $id
      * @return |null
+     *
      * @throws \Exception
      */
     public static function DecodeId($id)
@@ -42,7 +44,7 @@ trait Hashid
             throw new ModelNotFoundException('Unable to find element', 404);
         }
 
-        return $query->findOrFail(self::DecodeId($id));
+        return $query->findOrFail($decoded);
     }
 
     public function scopeFindHashed($query, $id)
@@ -51,7 +53,7 @@ trait Hashid
             return;
         }
 
-        return $query->find(self::DecodeId($id));
+        return $query->find($decoded);
     }
 
     public function scopeWhereInHashed($query, $values)
